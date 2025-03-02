@@ -1,0 +1,240 @@
+from fpdf import FPDF
+
+class PDF(FPDF):
+    def header(self):
+        # You can customize the header here if desired
+        pass
+
+    def footer(self):
+        # Add a footer with the page number
+        self.set_y(-15)
+        self.set_font('Arial', 'I', 8)
+        self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
+
+pdf = PDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+
+# --- Page 1: Title Page ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 24)
+pdf.cell(0, 10, "Mastering Your Day", ln=True, align="C")
+pdf.ln(10)
+pdf.set_font("Arial", "", 16)
+pdf.cell(0, 10, "AI-Powered Productivity and Mindfulness for the Modern Professional", ln=True, align="C")
+pdf.ln(20)
+pdf.cell(0, 10, "By [Your Name]", ln=True, align="C")
+
+# --- Page 2: Table of Contents ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 18)
+pdf.cell(0, 10, "Table of Contents", ln=True)
+pdf.ln(10)
+pdf.set_font("Arial", "", 12)
+contents = [
+    "1. Introduction",
+    "2. The Rise of AI in Daily Life",
+    "3. Understanding Mindfulness in a Digital Age",
+    "4. Bridging AI and Mindfulness for Optimal Productivity",
+    "5. Practical AI-Driven Productivity Hacks",
+    "6. Daily Mindfulness Practices for Stress Management",
+    "7. Building Your Personalized Routine",
+    "8. Interactive Tools & Worksheets",
+    "9. Overcoming Common Challenges",
+    "10. Action Plan: Mastering Your Day",
+    "11. Conclusion",
+    "12. References & Resources",
+    "13. About the Author"
+]
+for item in contents:
+    pdf.cell(0, 10, item, ln=True)
+
+# --- Page 3: Introduction ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "1. Introduction", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+intro_text = (
+    "In today’s fast-paced world, professionals face the dual challenges of managing an "
+    "ever-increasing digital workload and maintaining personal well-being. This ebook explores "
+    "how cutting-edge AI tools can supercharge productivity while mindfulness techniques help "
+    "maintain balance and reduce stress. By combining these two powerful strategies, you can create "
+    "a workflow that’s both efficient and centered—ensuring that you not only get more done but also "
+    "feel more in control."
+)
+pdf.multi_cell(0, 10, intro_text)
+
+# --- Pages 4-5: The Rise of AI in Daily Life ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "2. The Rise of AI in Daily Life", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+ai_text = (
+    "Recent advances in artificial intelligence (AI) have transformed the way we work. Tools like "
+    "natural language processors, automated scheduling systems, and intelligent virtual assistants are "
+    "now part of everyday work life. Whether it’s drafting emails with AI-powered writing assistants or "
+    "optimizing your calendar with smart scheduling apps, technology is making it easier than ever to manage "
+    "tasks quickly.\n\nImpact on Productivity:\n- Automation: Repetitive tasks are now automated, freeing up valuable time.\n"
+    "- Decision Support: AI helps in data analysis and decision-making, ensuring you’re working smarter.\n"
+    "- Personalization: Modern AI tailors recommendations to your work style, boosting efficiency."
+)
+pdf.multi_cell(0, 10, ai_text)
+
+# --- Pages 6-7: Understanding Mindfulness in a Digital Age ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "3. Understanding Mindfulness in a Digital Age", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+mindfulness_text = (
+    "Mindfulness is the practice of being fully present and engaged with the moment. It means acknowledging "
+    "your thoughts and feelings without judgment—a crucial skill in a world full of distractions.\n\n"
+    "Why It Matters:\n- Stress Reduction: Regular mindfulness practices lower stress and improve focus.\n"
+    "- Emotional Balance: Being mindful helps in managing emotions, vital for creative problem-solving.\n"
+    "- Improved Decision-Making: When you’re centered, you can approach tasks with clarity and efficiency.\n\n"
+    "Modern Challenges:\nDigital overload and constant notifications often pull our attention in multiple directions. "
+    "Mindfulness is your tool to reclaim focus and maintain a healthy mental state."
+)
+pdf.multi_cell(0, 10, mindfulness_text)
+
+# --- Pages 8-9: Bridging AI and Mindfulness for Optimal Productivity ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "4. Bridging AI and Mindfulness for Optimal Productivity", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+bridge_text = (
+    "Integrating AI’s efficiency with mindfulness’s calming effects can create a balanced workday. The key is to let "
+    "technology handle the heavy lifting while you maintain the mental clarity needed for creative and strategic tasks.\n\n"
+    "Strategies for Integration:\n- Scheduled AI Sessions: Use AI tools for batch processing emails and routine tasks, then set aside time for mindfulness breaks.\n"
+    "- Mindful Check-Ins: Regularly pause to assess how technology is affecting your mood and focus, and adjust your tools or routines accordingly.\n\n"
+    "Case Study Snapshot:\nConsider a professional who uses an AI calendar assistant to plan the day. Between meetings, they practice a five-minute guided meditation to reset their focus—resulting in higher overall productivity and lower stress levels."
+)
+pdf.multi_cell(0, 10, bridge_text)
+
+# --- Pages 10-11: Practical AI-Driven Productivity Hacks ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "5. Practical AI-Driven Productivity Hacks", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+productivity_text = (
+    "Hack 1: Email Automation\nUtilize AI-powered email tools to quickly sort and respond to messages, saving time and reducing inbox anxiety.\n\n"
+    "Hack 2: Intelligent Scheduling\nUse apps that analyze your meeting patterns to propose optimal times for focused work, blocking off “deep work” sessions and scheduling breaks.\n\n"
+    "Hack 3: Task Prioritization\nLeverage AI to analyze your to-do list and highlight tasks with the greatest impact, helping you focus on what truly matters each day.\n\n"
+    "Hack 4: Voice-to-Text Tools\nDictate ideas or notes during a break using voice-to-text tools to capture thoughts quickly without breaking your concentration."
+)
+pdf.multi_cell(0, 10, productivity_text)
+
+# --- Pages 12-13: Daily Mindfulness Practices for Stress Management ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "6. Daily Mindfulness Practices for Stress Management", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+mindfulness_practices_text = (
+    "Morning Routine:\n- Start your day with a 5-minute breathing exercise to set a calm tone.\n- Reflect on one thing you’re grateful for before diving into work.\n\n"
+    "Midday Check-In:\n- Use a mindfulness app for a brief meditation session during lunch or a break.\n- Take a mindful walk, focusing on your surroundings to clear your mind.\n\n"
+    "Evening Wind-Down:\n- Conclude your workday with journaling to record successes and challenges.\n- Practice gentle stretching or light yoga to release tension.\n\n"
+    "Benefits:\nRegular mindfulness practice not only reduces stress but also increases focus, creativity, and overall productivity."
+)
+pdf.multi_cell(0, 10, mindfulness_practices_text)
+
+# --- Pages 14-15: Building Your Personalized Routine ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "7. Building Your Personalized Routine", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+personalized_routine_text = (
+    "Assess Your Day:\nBegin by tracking your current work habits. Identify periods when you’re most productive and when distractions hit hardest.\n\n"
+    "Design Your Ideal Schedule:\nCreate a balanced daily plan that allocates time for AI-assisted work sessions, mindfulness breaks, deep work, and creative tasks.\n\n"
+    "Tips for Success:\n- Experiment with different routines until you find one that fits your lifestyle.\n- Use digital planners that integrate both task management and mindfulness reminders."
+)
+pdf.multi_cell(0, 10, personalized_routine_text)
+
+# --- Pages 16-17: Interactive Tools & Worksheets ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "8. Interactive Tools & Worksheets", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+interactive_text = (
+    "Worksheet 1: Daily Productivity Planner\nA template to list your top priorities, schedule AI sessions, and mark designated mindfulness breaks.\n\n"
+    "Worksheet 2: Mindfulness Reflection Journal\nGuided prompts to help you reflect on your daily experiences, note stress triggers, and celebrate small wins.\n\n"
+    "How to Use:\nPrint or use digital versions of these worksheets. Fill them out at the start and end of your day, then review weekly to refine your routine."
+)
+pdf.multi_cell(0, 10, interactive_text)
+
+# --- Page 18: Overcoming Common Challenges ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "9. Overcoming Common Challenges", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+challenges_text = (
+    "Digital Overload:\nSet boundaries by turning off non-essential notifications and dedicating specific times for checking emails and social media.\n\n"
+    "Inconsistent Mindfulness Practice:\nCommit to a regular schedule—even five minutes a day can make a difference. Use reminders on your phone or calendar.\n\n"
+    "Resistance to Change:\nStart small. Incorporate one new AI tool or mindfulness exercise at a time. Gradually, as benefits become clear, add more practices.\n\n"
+    "Practical Advice:\nKeep a log of your progress. Notice the positive changes in your productivity and mental well-being, and adjust your routine as needed."
+)
+pdf.multi_cell(0, 10, challenges_text)
+
+# --- Page 19: Action Plan: Mastering Your Day ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "10. Action Plan: Mastering Your Day", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+action_plan_text = (
+    "1. Define Your Goals:\nWrite down your key work and personal objectives.\n\n"
+    "2. Choose Your Tools:\nSelect one or two AI productivity apps and one mindfulness practice that resonate with you.\n\n"
+    "3. Design Your Schedule:\nDraft a daily routine that allocates time for work, breaks, and reflection.\n\n"
+    "4. Implement and Monitor:\nUse the provided worksheets to track your progress. Review and adjust your routine weekly.\n\n"
+    "5. Reflect and Adapt:\nRegularly assess how the integration of AI and mindfulness is impacting your productivity and well-being. Celebrate successes and learn from challenges."
+)
+pdf.multi_cell(0, 10, action_plan_text)
+
+# --- Page 20: Conclusion ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "11. Conclusion", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+conclusion_text = (
+    "By merging the efficiency of AI with the calming practices of mindfulness, you create a balanced approach to modern work. "
+    "This ebook outlined practical steps and provided tools to help you master your day. Embrace each day as an opportunity to learn, adapt, and grow. "
+    "Remember, the goal is not just to do more, but to feel better doing it."
+)
+pdf.multi_cell(0, 10, conclusion_text)
+
+# --- Page 21: References & Resources ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "12. References & Resources", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+references_text = (
+    "- For further reading on AI tools and productivity: [source]\n"
+    "- Insights on mindfulness and stress management: [source]\n"
+    "- Trends in ebook topics and digital publishing: [source]\n\n"
+    "Add additional links and resources as needed."
+)
+pdf.multi_cell(0, 10, references_text)
+
+# --- Page 22: About the Author ---
+pdf.add_page()
+pdf.set_font("Arial", "B", 16)
+pdf.cell(0, 10, "13. About the Author", ln=True)
+pdf.ln(5)
+pdf.set_font("Arial", "", 12)
+about_author_text = (
+    "[Your Name] is a digital productivity consultant and wellness advocate passionate about harnessing technology to enhance daily life. "
+    "With a background in [your field or expertise], [Your Name] helps professionals strike a balance between work efficiency and personal well-being. "
+    "Connect on [social media link] or visit [your website] for more insights."
+)
+pdf.multi_cell(0, 10, about_author_text)
+
+# Save the PDF to a file
+pdf.output("ebook.pdf")
